@@ -1,0 +1,26 @@
+.table {
+  width: 350px;
+  border: 1px solid grey;
+  margin-top: 5px;
+  padding: 0;
+}
+.thead {
+  background-color: #394043;
+}
+
+.tbody tr:nth-child(even) {
+  background-color: #212529;
+}
+
+.tbody tr:nth-child(odd) {
+  background-color: #2c3034;
+}
+
+.tbody tr {
+  cursor: pointer;
+}
+
+.tbody td {
+  display: flex;
+  justify-content: space-between;
+}

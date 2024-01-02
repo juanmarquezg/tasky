@@ -1,6 +1,7 @@
 import { FC, useEffect } from "react";
 import React, { useState } from "react";
 
+import  "./HomePage.css";
 import { Table } from "../../organisms";
 import { Button } from "../../atoms";
 import { Header, Form } from "../../molecules";
@@ -36,7 +37,11 @@ export const HomePage: FC<{}> = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!taskItems.find((t: any) => t.name === e)) {
+    if (newTask.trim() === "") {
+      alert("Por favor ingresa una tarea");
+      return;
+    }
+    if (!taskItems.find((t: any) => t.name === e) && newTask) {
       setTaskItems([...taskItems, { name: newTask, done: false }]);
       setNewTask("");
     }
@@ -56,7 +61,7 @@ export const HomePage: FC<{}> = () => {
     <>
       <Header />
       <section>
-        <div>
+        <div className="formContainer">
           <Form
             value={newTask}
             handleSubmit={handleSubmit}

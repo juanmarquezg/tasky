@@ -5,9 +5,13 @@ import { TableRowProps } from "./Table.types";
 import { CheckBox } from "../../atoms";
 
 export const TableRow: FC<TableRowProps> = ({ task, checked, onChange }) => {
+  const handleRowClick = () => {
+    onChange(task);
+  };
+
   return (
-    <tr>
-      <td style={{ display: 'flex', justifyContent: 'space-between' }}>
+    <tr onClick={handleRowClick}>
+      <td>
         <p>{task.name}</p>
         <CheckBox task={task} onChange={onChange} />
       </td>
