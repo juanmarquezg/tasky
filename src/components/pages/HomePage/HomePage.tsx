@@ -41,7 +41,7 @@ export const HomePage: FC<{}> = () => {
       alert("Por favor ingresa una tarea");
       return;
     }
-    if (!taskItems.find((t: any) => t.name === e) && newTask) {
+    if (!taskItems.find((t: any) => t.name === newTask)) {
       setTaskItems([...taskItems, { name: newTask, done: false }]);
       setNewTask("");
     }
