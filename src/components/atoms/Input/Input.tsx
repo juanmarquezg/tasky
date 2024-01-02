@@ -8,7 +8,6 @@ export const Input: FC<InputProps> = ({ value, onChange }) => {
     <input
       className="input"
       placeholder="Ingresa una nueva tarea..."
-      autoFocus
       value={value}
       onChange={onChange}
     />
