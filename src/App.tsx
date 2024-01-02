@@ -1,16 +1,12 @@
-import React from 'react';
-import logo from './logo2.png';
-import './App.css';
+import React from "react";
+
+import "./App.css";
+import { HomePage } from "./components/pages/index";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logox" alt="logo" />
-        <p>
-          Tasky, administra tus tareas
-        </p>
-      </header>
+      <HomePage />
     </div>
   );
 }
