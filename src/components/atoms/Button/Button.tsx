@@ -1,4 +1,4 @@
-import { FC } from "react";
+import React, { FC } from "react";
 
 import "./Button.css";
 import { ButtonProps } from "./Button.types";
@@ -11,3 +11,5 @@ export const Button: FC<ButtonProps> = ({ type, children, onClick }) => {
     </button>
   );
 };
+
+export const MemoizedButton = React.memo(Button);

@@ -1,9 +1,8 @@
-import { FC, useEffect } from "react";
-import React, { useState } from "react";
+import React, { FC, useState, useCallback, useEffect } from "react";
 
-import  "./HomePage.css";
+import "./HomePage.css";
 import { Table } from "../../organisms";
-import { Button } from "../../atoms";
+import { MemoizedButton, Button } from "../../atoms";
 import { Header, Form } from "../../molecules";
 import { useLocalStorageSet, useLocalStorageGet } from "../../../hooks";
 
@@ -31,9 +30,12 @@ export const HomePage: FC<{}> = () => {
     }
   }, [retrievedData]);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setNewTask(e.target.value);
-  };
+  const handleInputChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setNewTask(e.target.value);
+    },
+    []
+  );
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -53,9 +55,9 @@ export const HomePage: FC<{}> = () => {
     );
   };
 
-  const handleCleanTasks = () => {
+  const handleCleanTasks = useCallback(() => {
     setTaskItems([]);
-  };
+  }, []);
 
   return (
     <>
@@ -67,7 +69,7 @@ export const HomePage: FC<{}> = () => {
             handleSubmit={handleSubmit}
             handleInputChange={handleInputChange}
           />
-          <Button onClick={handleCleanTasks}>Limpiar tareas</Button>
+          <MemoizedButton onClick={handleCleanTasks}>Limpiar tareas</MemoizedButton>
         </div>
         <div>
           <Table tasks={taskItems} onChange={handleChecked} />
